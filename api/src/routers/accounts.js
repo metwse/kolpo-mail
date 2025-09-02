@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import * as z from 'zod';
-import { validate } from '../middleware.js';
+import { authenticationRequired, validate } from '../middleware.js';
 import accounts from '../services/accounts.js';
 
 
@@ -16,5 +16,6 @@ router.post('/signup', validate('body', {
   password: z.string(),
 }), accounts.signup);
 
+router.get('/me', authenticationRequired, (req, res) => res.send(req.user));
 
 export default router;

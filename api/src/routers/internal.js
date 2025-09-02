@@ -9,6 +9,7 @@ const router = new Router();
 router.post('/mail', validate('body', {
   from: z.email(),
   to: z.email(),
+  title: z.string(),
   content: z.string(),
   type: z.union([
     z.literal('html'),

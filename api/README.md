@@ -19,7 +19,9 @@ erDiagram
         text from "External mail sender"
         bigint to FK "ID of the account which mail belongs to"
         timestamp date
+        text title
         text content
+        text type "html or text"
     }
 
     users ||--o{ mails : has

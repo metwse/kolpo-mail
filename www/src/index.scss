@@ -1,0 +1,45 @@
+@use './theme.module.scss';
+@use 'sass:color';
+
+
+* {
+  box-sizing: border-box;
+  font-family: inherit; font-size: inherit;
+  color: theme.$color;
+}
+
+body {
+  margin: 0;
+  font-family: Rubik, arial;
+  background-color: theme.$bg1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: unset;
+}
+
+::-webkit-scrollbar {
+  width: 0; height: 0;
+}
+
+input[type="submit"],
+button {
+  padding: 0.5em 1em;
+  border: none;
+  background-color: theme.$primary;
+  transition: .3s background-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: color.adjust(theme.$primary, $lightness: 2);
+  }
+}
+
+input {
+  padding: 0.5em 1em;
+  border: none;
+  border: none;
+  background-color: theme.$bg1;
+  border-bottom: solid 0.125em theme.$primary;
+  outline: none;
+}

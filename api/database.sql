@@ -31,6 +31,7 @@ CREATE TABLE public.mails (
     "from" text NOT NULL,
     "to" bigint NOT NULL,
     "date" timestamp without time zone NOT NULL,
+    "title" text NOT NULL,
     "content" text NOT NULL,
     "type" text NOT NULL,
     PRIMARY KEY ("id"),
