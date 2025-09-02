@@ -1,0 +1,16 @@
+{
+  "name": "kolpo-backend",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metwse/kolpo-mail.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/metwse/kolpo-mail/issues"
+  },
+  "homepage": "https://github.com/metwse/kolpo-mail#readme",
+  "description": ""
+}
