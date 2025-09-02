@@ -32,7 +32,8 @@ CREATE TABLE public.mails (
     "to" bigint NOT NULL,
     "date" timestamp without time zone NOT NULL,
     "content" text NOT NULL,
-    PRIMARY KEY ("id", "from", "to", "date", "content"),
+    "type" text NOT NULL,
+    PRIMARY KEY ("id"),
     FOREIGN KEY ("to")
         REFERENCES public.users ("id") MATCH SIMPLE
         ON UPDATE NO ACTION

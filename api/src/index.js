@@ -11,6 +11,7 @@ dotenv.config({ quiet: true });
 
 import accountsRouter from './routers/accounts.js';
 import mailsRouter from './routers/mails.js';
+import internalRouter from './routers/internal.js';
 
 
 production = globalThis.production = process.env.NODE_ENV == 'production';
@@ -41,6 +42,7 @@ app.get('/favicon.ico', (_, res) => res.status(204).end());
 
 app.use(accountsRouter);
 app.use('/mails', mailsRouter);
+app.use('/internal', internalRouter);
 
 app.listen(process.env.PORT, process.env.HOST, () => {
   console.log(`App listening on ${process.env.PORT}`);
