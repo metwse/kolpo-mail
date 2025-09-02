@@ -26,6 +26,7 @@ export default function Gateway({ session, setIsLoggedIn }) {
         alert(`${error.message}\n${JSON.stringify(error.details)}`);
       } else {
         localStorage.setItem('token', session.current.token);
+        localStorage.setItem('email', email);
         setIsLoggedIn(true);
       }
 

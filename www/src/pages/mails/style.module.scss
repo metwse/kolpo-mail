@@ -1,0 +1,52 @@
+@use '../../theme.module.scss';
+@use 'sass:color';
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  & nav {
+    display: flex;
+    padding: 0.5em 1em;
+    border-bottom: 0.125em solid color.adjust(theme.$primary, $alpha: -0.5);
+    flex-direction: row; gap: 1em;
+    justify-content: space-between; align-items: center;
+
+    & h1 {
+      font-weight: normal;
+      font-size: 1.25em;
+    }
+  }
+}
+
+.loading {
+  padding: 1em;
+  opacity: 0.5;
+}
+
+.mail {
+  padding: 0.25em 1em;
+}
+
+.mail-list {
+  display: flex;
+  padding: 1em; margin: 0;
+  list-style: none;
+  flex-direction: column; gap: 1em;
+
+  & li {
+    & h3 {
+      font-weight: normal;
+      font-style: italic;
+      margin-bottom: 0.125em;
+      font-size: 1.25em;
+    }
+    & p { margin: 0 }
+  }
+
+  & li:not(:last-of-type) {
+    padding: 0 0 1em;
+    border-bottom: 0.125em solid color.adjust(theme.$primary, $alpha: -0.75);
+  }
+}

@@ -16,7 +16,7 @@ async function sendMail(req, res) {
 
   await pool.query(
     'INSERT INTO mails ("from", "to", "date", "title", "content", "type") \
-      VALUES ($1, $2, NOW(), $3, $4);',
+      VALUES ($1, $2, NOW(), $3, $4, $5);',
     [req.body.from, userId, req.body.title, req.body.content, req.body.type]
   );
 

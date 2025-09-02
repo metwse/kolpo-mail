@@ -31,7 +31,7 @@ button {
   cursor: pointer;
 
   &:hover {
-    background-color: color.adjust(theme.$primary, $lightness: 2);
+    background-color: color.adjust(theme.$primary, $lightness: 5);
   }
 }
 

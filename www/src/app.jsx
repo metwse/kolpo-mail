@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Mails from './pages/mails/mails';
 import Gateway from './pages/gateway/gateway';
 import Session from './session';
@@ -9,18 +9,22 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const session = useRef(new Session(localStorage.getItem('token')));
 
-  (async () => {
-    let [_, ok] = await session.current.checkToken();
+  useEffect(() => {
+    (async () => {
+      let [_, ok] = await session.current.checkToken();
 
-    setInitialLoad(false);
-    setIsLoggedIn(ok);
-  })();
+      setInitialLoad(false);
+      setIsLoggedIn(ok);
+    })();
+
+    return () => {};
+  }, [session]);
 
   return (<>
     {initialLoad ?
       <div>loading</div> : (isLoggedIn ?
-        <Mails session={session}/> :
-        <Gateway session={session} setIsLoggedIn={setIsLoggedIn}/>
+        <Mails session={session} setIsLoggedIn={setIsLoggedIn} /> :
+        <Gateway session={session} setIsLoggedIn={setIsLoggedIn} />
       )
     }
   </>);

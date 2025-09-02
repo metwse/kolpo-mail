@@ -1,20 +1,3 @@
-CREATE ROLE kolpomail WITH
-    LOGIN
-    NOSUPERUSER
-    NOCREATEDB
-    NOCREATEROLE
-    INHERIT
-    NOREPLICATION
-    NOBYPASSRLS
-    PASSWORD 'kolpomail';
-
-CREATE DATABASE kolpomail
-    WITH
-    OWNER = kolpomail
-    ENCODING = 'UTF8'
-    LOCALE_PROVIDER = 'libc'
-    IS_TEMPLATE = False;
-
 CREATE TABLE public.users (
     "id" bigint NOT NULL GENERATED ALWAYS AS IDENTITY (INCREMENT 1 START 1),
     "email" text NOT NULL,
