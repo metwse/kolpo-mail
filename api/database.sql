@@ -19,7 +19,8 @@ CREATE TABLE public.users (
     "id" bigint NOT NULL GENERATED ALWAYS AS IDENTITY (INCREMENT 1 START 1),
     "email" text NOT NULL,
     "password" text NOT NULL,
-    PRIMARY KEY ("id")
+    PRIMARY KEY ("id"),
+    UNIQUE ("email")
 );
 
 ALTER TABLE IF EXISTS public.users
