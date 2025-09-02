@@ -9,6 +9,7 @@ function verify(webtoken) {
   return jwt.verify(webtoken, process.env.JWT_SECRET);
 }
 
+
 export default {
   verify, sign
 };

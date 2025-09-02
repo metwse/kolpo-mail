@@ -7,9 +7,11 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
-import accountRouter from './routers/accounts.js';
-
 dotenv.config({ quiet: true });
+
+import accountsRouter from './routers/accounts.js';
+import mailsRouter from './routers/mails.js';
+
 
 production = globalThis.production = process.env.NODE_ENV == 'production';
 
@@ -37,7 +39,8 @@ app.get('/', (_, res) => {
 
 app.get('/favicon.ico', (_, res) => res.status(204).end());
 
-app.use(accountRouter);
+app.use(accountsRouter);
+app.use('/mails', mailsRouter);
 
 app.listen(process.env.PORT, process.env.HOST, () => {
   console.log(`App listening on ${process.env.PORT}`);

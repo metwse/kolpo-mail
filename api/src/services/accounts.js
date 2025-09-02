@@ -3,6 +3,7 @@
 import token from '../token.js';
 import bcrypt from 'bcrypt';
 
+
 const salt = bcrypt.genSaltSync(process.env.BCRYPT_ROUNDS);
 
 async function signup(req, res) {
@@ -56,6 +57,7 @@ async function login(req, res) {
     }, '1h')
   });
 }
+
 
 export default {
   login, signup
