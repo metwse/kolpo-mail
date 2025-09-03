@@ -1,0 +1,47 @@
+volumes:
+  pgdata:
+
+services:
+  backend:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./www
+      dockerfile: Dockerfile
+    restart: unless-stopped
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "1186:80"
+    restart: unless-stopped
+    depends_on:
+      - frontend
+      - backend
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: kolpomail
+      POSTGRES_PASSWORD: kolpomail
+      POSTGRES_DB: kolpomail
+    volumes:
+      - ./api/db/scheme.sql:/docker-entrypoint-initdb.d/scheme.sql
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kolpomail -d kolpomail"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
