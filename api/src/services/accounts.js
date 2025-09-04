@@ -18,6 +18,16 @@ async function signup(req, res) {
     // ID retured as string since JSON.parse does not support bigint.
     const id = query.rows[0].id;
 
+    await pool.query(
+      'INSERT INTO mails ("from", "to", "date", "title", "content", "type") \
+      VALUES ( \
+        \'system\', $1, NOW(), \'Welcome!\', \
+        \'Welcome to Kolpo Mail! Your account has been created successfully, \
+        your inbox will appear here.\', \'text\' \
+      );',
+      [id]
+    );
+
     res.send({
       id,
       token: token.sign({ email: req.body.email, id }, '1h')

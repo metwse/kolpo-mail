@@ -26,7 +26,7 @@ frontend, nginx, and PostgreSQL.
 ## Running the Project
 You need Docker and Docker Compose installed.
 1. Clone the repository and move into the project folder.
-2. Run docker compose up --build.
+2. Run `docker compose up --build`.
 3. Visit [http://localhost:1186](http://localhost:1186) in your browser.
 
 The system will bring up:
