@@ -60,7 +60,12 @@
       }
     }
 
-    & > .content { margin: 0 }
+    & > .content {
+      margin: 0;
+      word-wrap: break-word;
+
+      & > * { max-width: 100% }
+    }
   }
 
   & li:not(:last-of-type) {

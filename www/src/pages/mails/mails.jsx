@@ -50,8 +50,8 @@ export default function Mails({ session, setIsLoggedIn }) {
                 </div>
                 {mail.type == 'text' ?
                   <p className={styles['content']}>{mail.content}</p> :
-                  <div className={styles['content']}
-                    dangerouslySetInnerHTML={ {__html: mail.content} }>
+                  <div className={styles['content']}>
+                    <div dangerouslySetInnerHTML={ {__html: mail.content} } />
                   </div>
                 }
               </li>
